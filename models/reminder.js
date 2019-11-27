@@ -10,8 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     month: DataTypes.STRING,
     dayofweek: DataTypes.STRING
   }, {});
-  Reminder.associate = function(models) {
+  Reminder.associate = function (models) {
     // associations can be defined here
+    Reminder.belongsTo(models.User, { foreignKey: 'userId', as: 'User' })
   };
   return Reminder;
 };

@@ -4,8 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     reminderId: DataTypes.INTEGER
   }, {});
-  UsersReminders.associate = function(models) {
+  UsersReminders.associate = function (models) {
     // associations can be defined here
+    UsersReminders.belongsTo(models.User, { foreignKey: 'userId' })
+    UsersReminders.belongsTo(models.Reminder, { foreignKey: 'reminderId' })
   };
   return UsersReminders;
 };

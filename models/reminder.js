@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     hour: DataTypes.INTEGER,
     dayofmonth: DataTypes.INTEGER,
     month: DataTypes.STRING,
-    dayofweek: DataTypes.STRING
+    dayofweek: DataTypes.STRING,
+    repeat: DataTypes.BOOLEAN
   }, {});
   Reminder.associate = function (models) {
     // associations can be defined here

@@ -1,9 +1,28 @@
 var express = require('express');
 var router = express.Router();
+const models = require("../models")
+const User = models.User
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', async function (req, res, next) {
+  try {
+    let allUsers = await User.findAll()
+    res.send(allUsers);
+  } catch (error) {
+    console.log(error)
+    res.status(500).send("An Error Has occured")
+  }
+});
+
+router.get('/orders', async function (req, res, next) {
+  try {
+    let allUsers = await User.findAll({ include: ['reminders'] })
+    console.log(allUsers)
+    res.send(allUsers);
+  } catch (error) {
+    console.log(error)
+    res.status(500).send("An Error Has occured")
+  }
 });
 
 module.exports = router;

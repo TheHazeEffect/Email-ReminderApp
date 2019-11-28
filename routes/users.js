@@ -14,7 +14,7 @@ router.get('/', async function (req, res, next) {
   }
 });
 
-router.get('/orders', async function (req, res, next) {
+router.get('/reminders', async function (req, res, next) {
   try {
     let allUsers = await User.findAll({ include: ['reminders'] })
     console.log(allUsers)

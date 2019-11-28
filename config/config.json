@@ -16,11 +16,11 @@
     "operatorsAliases": 1
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
+    "username": "zdfsgyxu",
+    "password": "xGSIyRJuITXXN4toxxLxYyKAdavh5pQb",
+    "database": "zdfsgyxu",
+    "host": "raja.db.elephantsql.com",
+    "dialect": "postgres",
     "operatorsAliases": 1
   }
 }

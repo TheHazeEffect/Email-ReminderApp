@@ -4,13 +4,18 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production node ./bin/www",
-    "dev": "NODE_ENV=development nodemon ./bin/www"
+    "dev": "NODE_ENV=development nodemon ./bin/www",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+    "migrate:reset": "yarn sequelize-cli db:migrate:undo:all && yarn run migrate",
+    "migrate": "yarn sequelize-cli db:migrate",
+    "pretest": "cross-env NODE_ENV=test yarn run migrate:reset"
   },
   "dependencies": {
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "global": "^4.4.0",
     "helmet": "^3.21.2",
     "morgan": "~1.9.1",
     "node-cron": "^2.0.3",
@@ -19,7 +24,16 @@
     "sequelize": "^5.21.2"
   },
   "devDependencies": {
+    "jest": "^24.9.0",
     "nodemon": "^2.0.1",
-    "sqlite3": "^4.1.0"
+    "sequelize-cli": "^5.5.1",
+    "sqlite3": "^4.1.0",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }

@@ -20,11 +20,9 @@ router.get('/:id', async (req,res,bext) =>{
     const id = req.params.id
     
     const Founduser = await User.findByPk(id)
-      // .then( user => (
-      //   console.log(user)
-      // ))
     if(!Founduser){
       res.status(404).send(`user with Id ${id} could not be found`)
+      return;
     }
     res.send(Founduser.get())
   }catch(error){
@@ -52,6 +50,7 @@ router.post('/', async (req,res,next) => {
     
     if(!await User.create(Newuser)){
       res.status(500).send("Could not create new user")
+      return;
     }
   
     res.status(201).send(Newuser)
@@ -70,6 +69,7 @@ router.put('/:id', async (req,res,next) => {
     
     if(recordsupdated[0] === 0){
       res.status(500).send("User could not be updated")
+      return;
     }
 
     res.status(200).send(updatedUser)
@@ -87,6 +87,7 @@ router.delete('/:id', async (req,res,nexy) => {
     result = await User.destroy({where: {id:id}})
     if(!result){
       res.status(500).send("The user could not be deleted")
+      return;
     }
     res.status(200).send("user successfully deleted")
   }catch(error) {

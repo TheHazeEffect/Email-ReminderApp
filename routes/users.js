@@ -47,15 +47,11 @@ router.get('/reminders', async function (req, res, next) {
 
 //add user
 router.post('/', async (req,res,next) => {
-  const {firstName,lastName,email} = req.body
+  const Newuser = req.body
   try {
-    const Newuser = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email
-    }
+    
     if(!await User.create(Newuser)){
-      return res.status(500).send("Could not create new user")
+      res.status(500).send("Could not create new user")
     }
   
     res.status(201).send(Newuser)
@@ -69,6 +65,7 @@ router.put('/:id', async (req,res,next) => {
   const {id} = req.params
   const updatedUser = req.body
   try{
+    
     const recordsupdated = await User.update(updatedUser,{where: { id:id}})
     
     if(recordsupdated[0] === 0){

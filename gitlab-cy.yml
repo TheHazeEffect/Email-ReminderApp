@@ -17,14 +17,21 @@ install_dependencies:
     paths:
       - node_modules/
 
-deploy_to_production:
-  stage: deploy
-  image: php:7.2-apache
+test:
+  stage: install_Dependencies
   script:
-    - curl -S "https://gitlab.com/chinloyal/ftp-deploy-tool/raw/master/deployment.phar" --output deployment.phar
-    - echo remote = $FTP_HOST >> deployment.ini
-    - echo user = $FTP_USER >> deployment.ini
-    - echo password = $FTP_PASSWORD >> deployment.ini
-    - php deployment.phar deployment.ini
-  only:
-  - master
+    - yarn test
+ 
+
+# deploy_to_production:
+#   stage: deploy
+#   image: php:7.2-apache
+#   script:
+#     - curl -S "https://gitlab.com/chinloyal/ftp-deploy-tool/raw/master/deployment.phar" --output deployment.phar
+#     - cat $ENV > .env
+#     - echo remote = $FTP_HOST >> deployment.ini
+#     - echo user = $FTP_USER >> deployment.ini
+#     - echo password = $FTP_PASSWORD >> deployment.ini
+#     - php deployment.phar deployment.ini
+#   only:
+#   - master

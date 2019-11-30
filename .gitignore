@@ -1,2 +1,4 @@
 node_modules
-database.db
+database_dev.db
+database_test.db
+.env

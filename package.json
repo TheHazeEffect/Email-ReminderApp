@@ -16,7 +16,7 @@
     "cross-env": "^6.0.3",
     "debug": "~2.6.9",
     "env-cmd": "^10.0.1",
-    "express": "~4.16.1",
+    "express": "~4.17.3",
     "global": "^4.4.0",
     "googleapis": "^45.0.0",
     "helmet": "^3.21.2",
